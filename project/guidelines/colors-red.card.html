@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Brand — Red" subtitle="Primary red scale, sampled from logo (500)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px; background:var(--bg-page); }
+    .row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+    .swatch { height: 80px; border-radius: var(--radius-md); display:flex; align-items:flex-end; padding:8px; color: white; font-family: var(--font-mono); font-size: 11px; box-shadow: var(--shadow-xs); }
+    .swatch.light { color: var(--dillo-red-700); }
+    .meta { display:flex; flex-direction:column; gap:1px; }
+    .name { font-weight:700; font-family: var(--font-heading); font-size:11px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch light" style="background:var(--dillo-red-50)"><div class="meta"><span class="name">50</span><span>#FFF1F2</span></div></div>
+    <div class="swatch light" style="background:var(--dillo-red-100)"><div class="meta"><span class="name">100</span><span>#FFD9DE</span></div></div>
+    <div class="swatch light" style="background:var(--dillo-red-200)"><div class="meta"><span class="name">200</span><span>#FCAFB8</span></div></div>
+    <div class="swatch" style="background:var(--dillo-red-300)"><div class="meta"><span class="name">300</span><span>#F47785</span></div></div>
+    <div class="swatch" style="background:var(--dillo-red-400)"><div class="meta"><span class="name">400</span><span>#E83A4F</span></div></div>
+    <div class="swatch" style="background:var(--dillo-red-500); outline: 2px solid var(--dillo-navy-500); outline-offset:2px"><div class="meta"><span class="name">500 ★</span><span>#D7011F</span></div></div>
+    <div class="swatch" style="background:var(--dillo-red-600)"><div class="meta"><span class="name">600</span><span>#B30119</span></div></div>
+    <div class="swatch" style="background:var(--dillo-red-700)"><div class="meta"><span class="name">700</span><span>#8C0114</span></div></div>
+  </div>
+</body>
+</html>

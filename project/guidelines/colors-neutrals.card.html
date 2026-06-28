@@ -1,0 +1,29 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Neutrals" subtitle="Cool-biased greys for surfaces & text" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px; background:var(--bg-page); }
+    .row { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
+    .swatch { height: 78px; border-radius: var(--radius-md); display:flex; align-items:flex-end; padding:6px; font-family: var(--font-mono); font-size: 10px; box-shadow: var(--shadow-xs); }
+    .meta { display:flex; flex-direction:column; gap:1px; }
+    .name { font-weight:700; font-family: var(--font-heading); font-size:11px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch" style="background:var(--neutral-0); color:#000; border:1px solid var(--border-default)"><div class="meta"><span class="name">0</span><span>FFFFFF</span></div></div>
+    <div class="swatch" style="background:var(--neutral-50); color:#000"><div class="meta"><span class="name">50</span><span>FAFAFB</span></div></div>
+    <div class="swatch" style="background:var(--neutral-100); color:#000"><div class="meta"><span class="name">100</span><span>F3F4F7</span></div></div>
+    <div class="swatch" style="background:var(--neutral-150); color:#000"><div class="meta"><span class="name">150</span><span>EAECF1</span></div></div>
+    <div class="swatch" style="background:var(--neutral-200); color:#000"><div class="meta"><span class="name">200</span><span>DCDFE7</span></div></div>
+    <div class="swatch" style="background:var(--neutral-300); color:#000"><div class="meta"><span class="name">300</span><span>BCC2D0</span></div></div>
+    <div class="swatch" style="background:var(--neutral-400); color:#fff"><div class="meta"><span class="name">400</span><span>8B92A4</span></div></div>
+    <div class="swatch" style="background:var(--neutral-500); color:#fff"><div class="meta"><span class="name">500</span><span>5E6577</span></div></div>
+    <div class="swatch" style="background:var(--neutral-700); color:#fff"><div class="meta"><span class="name">700</span><span>272C38</span></div></div>
+    <div class="swatch" style="background:var(--neutral-900); color:#fff"><div class="meta"><span class="name">900</span><span>0C0E13</span></div></div>
+  </div>
+</body>
+</html>

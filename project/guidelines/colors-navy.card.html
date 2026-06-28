@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Brand — Navy" subtitle="Primary navy scale, sampled from tagline (500)" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px; background:var(--bg-page); }
+    .row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+    .swatch { height: 80px; border-radius: var(--radius-md); display:flex; align-items:flex-end; padding:8px; color: white; font-family: var(--font-mono); font-size: 11px; box-shadow: var(--shadow-xs); }
+    .swatch.light { color: var(--dillo-navy-700); }
+    .meta { display:flex; flex-direction:column; gap:1px; }
+    .name { font-weight:700; font-family: var(--font-heading); font-size:11px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="swatch light" style="background:var(--dillo-navy-50)"><div class="meta"><span class="name">50</span><span>#EEF1F8</span></div></div>
+    <div class="swatch light" style="background:var(--dillo-navy-100)"><div class="meta"><span class="name">100</span><span>#D2D9EB</span></div></div>
+    <div class="swatch light" style="background:var(--dillo-navy-200)"><div class="meta"><span class="name">200</span><span>#97A4C8</span></div></div>
+    <div class="swatch" style="background:var(--dillo-navy-300)"><div class="meta"><span class="name">300</span><span>#5E70A1</span></div></div>
+    <div class="swatch" style="background:var(--dillo-navy-400)"><div class="meta"><span class="name">400</span><span>#2E417A</span></div></div>
+    <div class="swatch" style="background:var(--dillo-navy-500); outline: 2px solid var(--dillo-red-500); outline-offset:2px"><div class="meta"><span class="name">500 ★</span><span>#0F1F4D</span></div></div>
+    <div class="swatch" style="background:var(--dillo-navy-600)"><div class="meta"><span class="name">600</span><span>#0A1638</span></div></div>
+    <div class="swatch" style="background:var(--dillo-navy-700)"><div class="meta"><span class="name">700</span><span>#060E25</span></div></div>
+  </div>
+</body>
+</html>

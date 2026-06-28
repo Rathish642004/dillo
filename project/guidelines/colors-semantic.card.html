@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Semantics" subtitle="Success, warning, danger, info" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px; background:var(--bg-page); }
+    .row { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
+    .pair { display:flex; flex-direction:column; gap:6px; }
+    .swatch { height:48px; border-radius: var(--radius-md); display:flex; align-items:center; padding:0 10px; color:white; font-family:var(--font-mono); font-size:11px; box-shadow: var(--shadow-xs); }
+    .soft { color: var(--text-primary); }
+    .label { font-family:var(--font-heading); font-weight:700; font-size:12px; color:var(--text-primary); text-transform: uppercase; letter-spacing: var(--ls-eyebrow); }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="pair"><div class="label">Success</div><div class="swatch" style="background:var(--success-500)">#1F8A4C</div><div class="swatch soft" style="background:var(--success-50)">#E8F5EE</div></div>
+    <div class="pair"><div class="label">Warning</div><div class="swatch" style="background:var(--warning-500)">#C8810A</div><div class="swatch soft" style="background:var(--warning-50)">#FBF1DC</div></div>
+    <div class="pair"><div class="label">Danger</div><div class="swatch" style="background:var(--danger-500)">#D7011F</div><div class="swatch soft" style="background:var(--danger-50)">#FFF1F2</div></div>
+    <div class="pair"><div class="label">Info</div><div class="swatch" style="background:var(--info-500)">#2E417A</div><div class="swatch soft" style="background:var(--info-50)">#EEF1F8</div></div>
+  </div>
+</body>
+</html>

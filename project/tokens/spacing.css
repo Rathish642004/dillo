@@ -1,0 +1,33 @@
+/* Dillo Uniforms — Spacing & layout tokens. 4px base grid. */
+
+:root {
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Section rhythm — used on the marketing site */
+  --section-pad-y: 96px;
+  --section-pad-y-sm: 64px;
+  --container-max: 1240px;
+  --container-pad: 24px;
+
+  /* Radii — kept restrained. Industrial/utility brand. */
+  --radius-none: 0;
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-pill: 999px;
+}

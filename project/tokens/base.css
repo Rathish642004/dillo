@@ -1,0 +1,86 @@
+/* Dillo Uniforms — light base layer. Type defaults + a couple of utility classes
+   that appear all over the marketing site (eyebrow, red rule, container). */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-base);
+  color: var(--text-primary);
+  background: var(--bg-page);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-snug);
+  font-weight: var(--fw-bold);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+
+p { margin: 0; }
+a { color: var(--text-brand); text-decoration: none; }
+a:hover { color: var(--dillo-red-600); }
+
+img { display: block; max-width: 100%; }
+
+::selection { background: var(--dillo-red-500); color: var(--neutral-0); }
+
+/* ── Utilities used across UI kits & cards ─────────────────────── */
+
+.dillo-eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--dillo-red-500);
+}
+
+.dillo-rule {
+  display: block;
+  width: 64px;
+  height: var(--rule-thickness);
+  background: var(--dillo-red-500);
+  border: 0;
+  margin: 0;
+}
+.dillo-rule--full { width: 100%; }
+.dillo-rule--bold { height: var(--rule-thickness-bold); }
+
+.dillo-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+/* The DILLO mark wrapper — red banner with white blocky text */
+.dillo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: var(--dillo-red-500);
+  color: var(--neutral-0);
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  border-radius: var(--radius-sm);
+}

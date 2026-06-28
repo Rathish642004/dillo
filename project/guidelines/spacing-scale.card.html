@@ -1,0 +1,31 @@
+<!-- @dsCard group="Spacing" viewport="700x140" name="4px scale" subtitle="The full spacing token ladder" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px; background:var(--bg-page); }
+    .row { display:flex; align-items:flex-end; gap:10px; }
+    .stack { display:flex; flex-direction:column; align-items:center; gap:6px; font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+    .bar { background: var(--dillo-navy-500); border-radius: 2px; width: 14px; }
+    .lbl { font-family: var(--font-heading); color: var(--text-primary); font-weight:700; font-size:11px; }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="stack"><div class="bar" style="height:4px"></div><span class="lbl">1</span><span>4</span></div>
+    <div class="stack"><div class="bar" style="height:8px"></div><span class="lbl">2</span><span>8</span></div>
+    <div class="stack"><div class="bar" style="height:12px"></div><span class="lbl">3</span><span>12</span></div>
+    <div class="stack"><div class="bar" style="height:16px"></div><span class="lbl">4</span><span>16</span></div>
+    <div class="stack"><div class="bar" style="height:20px"></div><span class="lbl">5</span><span>20</span></div>
+    <div class="stack"><div class="bar" style="height:24px"></div><span class="lbl">6</span><span>24</span></div>
+    <div class="stack"><div class="bar" style="height:32px"></div><span class="lbl">8</span><span>32</span></div>
+    <div class="stack"><div class="bar" style="height:40px"></div><span class="lbl">10</span><span>40</span></div>
+    <div class="stack"><div class="bar" style="height:48px"></div><span class="lbl">12</span><span>48</span></div>
+    <div class="stack"><div class="bar" style="height:56px"></div><span class="lbl">14</span><span>56</span></div>
+    <div class="stack"><div class="bar" style="height:64px"></div><span class="lbl">16</span><span>64</span></div>
+    <div class="stack"><div class="bar" style="height:80px"></div><span class="lbl">20</span><span>80</span></div>
+  </div>
+</body>
+</html>

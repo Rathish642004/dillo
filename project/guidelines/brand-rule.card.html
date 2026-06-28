@@ -1,0 +1,18 @@
+<!-- @dsCard group="Brand" viewport="700x140" name="Red rule" subtitle="The signature 4–8px brand bar" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:24px; background:var(--bg-page); display:flex; flex-direction:column; gap:16px; }
+    .row { display:flex; align-items:center; gap:16px; }
+    .label { font-family: var(--font-mono); font-size:12px; color: var(--text-muted); width:120px; }
+  </style>
+</head>
+<body>
+  <div class="row"><div class="label">--rule (4px)</div><hr class="dillo-rule" style="width:480px"></div>
+  <div class="row"><div class="label">--rule bold (8px)</div><hr class="dillo-rule dillo-rule--bold" style="width:480px"></div>
+  <div class="row"><div class="label">full-bleed</div><hr class="dillo-rule" style="flex:1"></div>
+</body>
+</html>

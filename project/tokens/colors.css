@@ -1,0 +1,84 @@
+/* Dillo Uniforms — Color tokens
+   Sourced directly from the brand mark: pure red banner + deep navy serif tagline. */
+
+:root {
+  /* ── Brand primitives ─────────────────────────────────────────── */
+  --dillo-red-50:  #FFF1F2;
+  --dillo-red-100: #FFD9DE;
+  --dillo-red-200: #FCAFB8;
+  --dillo-red-300: #F47785;
+  --dillo-red-400: #E83A4F;
+  --dillo-red-500: #D7011F;   /* primary red — sampled from logo */
+  --dillo-red-600: #B30119;
+  --dillo-red-700: #8C0114;
+  --dillo-red-800: #5E000D;
+
+  --dillo-navy-50:  #EEF1F8;
+  --dillo-navy-100: #D2D9EB;
+  --dillo-navy-200: #97A4C8;
+  --dillo-navy-300: #5E70A1;
+  --dillo-navy-400: #2E417A;
+  --dillo-navy-500: #0F1F4D;   /* primary navy — sampled from tagline */
+  --dillo-navy-600: #0A1638;
+  --dillo-navy-700: #060E25;
+  --dillo-navy-800: #030716;
+
+  /* ── Neutrals — warm-cool, biased to navy ─────────────────────── */
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #FAFAFB;
+  --neutral-100: #F3F4F7;
+  --neutral-150: #EAECF1;
+  --neutral-200: #DCDFE7;
+  --neutral-300: #BCC2D0;
+  --neutral-400: #8B92A4;
+  --neutral-500: #5E6577;
+  --neutral-600: #3F4554;
+  --neutral-700: #272C38;
+  --neutral-800: #181B23;
+  --neutral-900: #0C0E13;
+
+  /* ── Semantic — feedback ─────────────────────────────────────── */
+  --success-500: #1F8A4C;
+  --success-50:  #E8F5EE;
+  --warning-500: #C8810A;
+  --warning-50:  #FBF1DC;
+  --danger-500:  var(--dillo-red-500);
+  --danger-50:   var(--dillo-red-50);
+  --info-500:    var(--dillo-navy-400);
+  --info-50:     var(--dillo-navy-50);
+
+  /* ── Semantic aliases — use these in components ───────────────── */
+  --color-brand:           var(--dillo-red-500);
+  --color-brand-strong:    var(--dillo-red-600);
+  --color-brand-soft:      var(--dillo-red-50);
+  --color-accent:          var(--dillo-navy-500);
+  --color-accent-strong:   var(--dillo-navy-600);
+  --color-accent-soft:     var(--dillo-navy-50);
+
+  --bg-page:               var(--neutral-0);
+  --bg-page-alt:           var(--neutral-50);
+  --bg-band:               var(--neutral-100);
+  --bg-band-dark:          var(--dillo-navy-500);
+  --bg-band-brand:         var(--dillo-red-500);
+
+  --surface-card:          var(--neutral-0);
+  --surface-card-alt:      var(--neutral-50);
+  --surface-overlay:       rgba(15, 31, 77, 0.55);   /* navy scrim */
+  --surface-overlay-strong:rgba(15, 31, 77, 0.75);
+
+  --text-primary:          var(--dillo-navy-500);
+  --text-secondary:        var(--neutral-600);
+  --text-muted:            var(--neutral-500);
+  --text-inverse:          var(--neutral-0);
+  --text-brand:            var(--dillo-red-500);
+  --text-on-brand:         var(--neutral-0);
+  --text-on-accent:        var(--neutral-0);
+
+  --border-subtle:         var(--neutral-150);
+  --border-default:        var(--neutral-200);
+  --border-strong:         var(--neutral-300);
+  --border-brand:          var(--dillo-red-500);
+  --border-focus:          var(--dillo-navy-400);
+
+  --rule-brand:            var(--dillo-red-500);   /* the signature red underline */
+}

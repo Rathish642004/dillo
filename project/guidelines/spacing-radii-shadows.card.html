@@ -1,0 +1,39 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Radii & shadows" subtitle="Corner & elevation tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { margin:0; padding:20px 24px; background:var(--bg-page); display:flex; gap: 28px; }
+    .section { display:flex; flex-direction: column; gap: 8px; flex:1; }
+    .lbl { font-family: var(--font-heading); font-weight: 700; font-size: 11px; color: var(--text-primary); text-transform: uppercase; letter-spacing: var(--ls-eyebrow); }
+    .row { display:flex; gap: 12px; }
+    .box { background: var(--surface-card); border: 1px solid var(--border-default); width: 64px; height: 64px; display:flex; align-items:flex-end; justify-content:center; font-family:var(--font-mono); font-size:10px; color: var(--text-muted); padding: 4px; }
+    .sh { background: var(--surface-card); width: 80px; height: 60px; border-radius: var(--radius-lg); display:flex; align-items:flex-end; justify-content:center; font-family:var(--font-mono); font-size:10px; color: var(--text-muted); padding: 4px; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="lbl">Radius</div>
+    <div class="row">
+      <div class="box" style="border-radius: var(--radius-none)">0</div>
+      <div class="box" style="border-radius: var(--radius-sm)">2</div>
+      <div class="box" style="border-radius: var(--radius-md)">4</div>
+      <div class="box" style="border-radius: var(--radius-lg)">8</div>
+      <div class="box" style="border-radius: var(--radius-xl)">12</div>
+      <div class="box" style="border-radius: var(--radius-pill)">∞</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="lbl">Shadow</div>
+    <div class="row">
+      <div class="sh" style="box-shadow: var(--shadow-xs)">xs</div>
+      <div class="sh" style="box-shadow: var(--shadow-sm)">sm</div>
+      <div class="sh" style="box-shadow: var(--shadow-md)">md</div>
+      <div class="sh" style="box-shadow: var(--shadow-lg)">lg</div>
+      <div class="sh" style="box-shadow: var(--shadow-xl)">xl</div>
+    </div>
+  </div>
+</body>
+</html>

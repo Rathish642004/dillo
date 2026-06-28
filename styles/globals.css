@@ -1,0 +1,98 @@
+/* Dillo Uniforms Design System — token imports */
+@import '../project/tokens/colors.css';
+@import '../project/tokens/typography.css';
+@import '../project/tokens/spacing.css';
+@import '../project/tokens/elevation.css';
+@import '../project/tokens/base.css';
+
+/* Wire next/font CSS vars into design token vars */
+:root {
+  --font-display: var(--font-archivo-black, 'Archivo Black', sans-serif);
+  --font-heading: var(--font-archivo, 'Archivo', sans-serif);
+  --font-serif: var(--font-source-serif, 'Source Serif 4', serif);
+  --font-body: var(--font-public-sans, 'Public Sans', sans-serif);
+}
+
+/* Base resets */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-page);
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* Responsive section padding */
+@media (max-width: 768px) {
+  :root {
+    --section-pad-y: 64px;
+    --container-pad: 16px;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --section-pad-y: 48px;
+    --container-pad: 12px;
+  }
+}
+
+/* Responsive grid helpers */
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* Hero responsive text */
+.hero-h1 { font-size: 76px; line-height: 1.0; letter-spacing: -0.02em; }
+@media (max-width: 768px) { .hero-h1 { font-size: 48px; } }
+@media (max-width: 480px) { .hero-h1 { font-size: 36px; } }
+
+/* Hero stats strip */
+.hero-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px 0; }
+@media (max-width: 768px) { .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+/* Products page category tabs — horizontal scroll on mobile */
+.category-tabs { display: flex; gap: 8px; }
+@media (max-width: 768px) {
+  .category-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; white-space: nowrap; }
+  .category-tabs::-webkit-scrollbar { height: 3px; }
+  .category-tabs::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 2px; }
+}
+
+/* Portfolio grid */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+@media (max-width: 1024px) { .portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .portfolio-grid { grid-template-columns: 1fr; } }
+
+/* Footer grid */
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+@media (max-width: 540px) { .footer-grid { grid-template-columns: 1fr; gap: 24px; } }
+
+/* Contact page 2-col layout */
+.contact-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* About story 2-col */
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+@media (max-width: 768px) { .story-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* NavBar mobile */
+.navbar-links { display: flex; align-items: center; gap: 8px; }
+.navbar-hamburger { display: none; }
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .navbar-hamburger { display: flex; }
+  .navbar-links.open { display: flex; flex-direction: column; align-items: flex-start; }
+}
+
