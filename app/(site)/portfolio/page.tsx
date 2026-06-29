@@ -11,10 +11,10 @@ export default async function PortfolioPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ background: 'var(--bg-page-alt)', padding: '96px 0 64px', borderBottom: '1px solid var(--border-subtle)' }}>
+      <section className="page-hero-section" style={{ background: 'var(--bg-page-alt)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="dillo-container" style={{ display: 'flex', flexDirection: 'column', gap: 18, maxWidth: 760 }}>
           <span className="dillo-eyebrow">Portfolio</span>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.02em', margin: 0 }}>
+          <h1 className="page-h1" style={{ fontFamily: 'var(--font-display)' }}>
             Work we&rsquo;ve stitched.
           </h1>
           <hr style={{ width: 96, height: 6, background: 'var(--dillo-red-500)', border: 0, margin: 0 }} />

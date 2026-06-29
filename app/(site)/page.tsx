@@ -31,14 +31,21 @@ export default async function HomePage() {
 
   return (
     <>
+      <style>{`
+        .hero-main-pad { padding-top: 120px; padding-bottom: 160px; }
+        @media (max-width: 768px) { .hero-main-pad { padding-top: 72px; padding-bottom: 120px; } }
+        @media (max-width: 480px) { .hero-main-pad { padding-top: 56px; padding-bottom: 96px; } }
+        .hero-lead-text { font-size: 20px; }
+        @media (max-width: 480px) { .hero-lead-text { font-size: 16px; } }
+      `}</style>
       {/* Hero */}
       <section style={{ position: 'relative', minHeight: 640, overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', inset: 0,
-          background: 'var(--dillo-navy-500)',
+          background: `center/cover no-repeat url(https://images.unsplash.com/photo-1581922814484-0b48460b7010?w=1600&q=80) var(--dillo-navy-500)`,
         }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,31,77,0.85) 0%, rgba(15,31,77,0.7) 50%, rgba(15,31,77,0.45) 100%)' }} />
-        <div className="dillo-container" style={{ position: 'relative', paddingTop: 120, paddingBottom: 160 }}>
+        <div className="dillo-container hero-main-pad" style={{ position: 'relative' }}>
           <div style={{ maxWidth: 720, display: 'flex', flexDirection: 'column', gap: 24, color: '#fff' }}>
             <span style={{
               display: 'inline-flex', alignSelf: 'flex-start',
@@ -52,11 +59,11 @@ export default async function HomePage() {
               margin: 0, color: '#fff',
             }}>The perfect uniform.<br />Stitched on time.</h1>
             <hr style={{ width: 96, height: 6, background: 'var(--dillo-red-500)', border: 0, margin: 0 }} />
-            <p style={{ fontSize: 20, lineHeight: 1.5, color: 'rgba(255,255,255,0.88)', maxWidth: 580 }}>
+            <p className="hero-lead-text" style={{ lineHeight: 1.5, color: 'rgba(255,255,255,0.88)', maxWidth: 580 }}>
               Twenty years stitching uniforms for India&rsquo;s hospitals, hotels, classrooms and factory floors.
               From 50 pieces to 50,000 — same quality control either way.
             </p>
-            <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+            <div className="btn-group" style={{ marginTop: 8 }}>
               <Link href="/contact">
                 <Button variant="primary" size="lg" iconRight={<span aria-hidden>→</span>}>Get a quote</Button>
               </Link>
@@ -73,7 +80,7 @@ export default async function HomePage() {
           borderTop: '4px solid var(--dillo-red-500)',
           backdropFilter: 'blur(8px)',
         }}>
-          <div className="dillo-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 32, padding: '24px 0' }}>
+          <div className="dillo-container hero-stats-strip">
             {heroStats.map((s) => (
               <div key={s.id} style={{ display: 'flex', flexDirection: 'column', gap: 4, color: '#fff' }}>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1 }}>{s.value}</div>
@@ -90,13 +97,7 @@ export default async function HomePage() {
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <span className="dillo-eyebrow">Trusted by</span>
           </div>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4,1fr)',
-            gap: 0,
-            borderTop: '1px solid var(--border-subtle)',
-            borderLeft: '1px solid var(--border-subtle)',
-          }}>
+          <div className="clients-grid">
             {clients.map((c) => (
               <div key={c.id} style={{
                 padding: '28px 16px',
@@ -121,7 +122,7 @@ export default async function HomePage() {
       {/* Why Dillo */}
       <Section tone="white" pad="lg">
         <SectionHeader eyebrow="Why Dillo" title="Built to last. Delivered on time." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 32, marginTop: 56 }}>
+        <div className="grid-4" style={{ marginTop: 56 }}>
           {valueProps.map((vp, idx) => (
             <div key={vp.id} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               <span style={{
@@ -138,20 +139,10 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      {/* Numbers */}
-      <Section tone="navy" pad="lg" bottomRule>
-        <SectionHeader onDark eyebrow="Numbers that build trust" title="Two decades of stitched promise." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 48, marginTop: 56 }}>
-          {stats.slice(0, 4).map((s) => (
-            <StatCard key={s.id} value={s.value} label={s.metric} onDark />
-          ))}
-        </div>
-      </Section>
-
       {/* Products */}
       <Section tone="alt" pad="lg">
         <SectionHeader eyebrow="Our products" title="Five verticals, one quality bar." description="Pick a category — every one ships from the same Mumbai floor under the same QC team." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 56 }}>
+        <div className="grid-3" style={{ marginTop: 56 }}>
           {categories.slice(0, 3).map((cat) => (
             <Link key={cat.id} href="/products" style={{ textDecoration: 'none' }}>
               <ProductCard
@@ -164,7 +155,7 @@ export default async function HomePage() {
             </Link>
           ))}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginTop: 24 }}>
+        <div className="grid-2" style={{ marginTop: 24 }}>
           {categories.slice(3).map((cat) => (
             <Link key={cat.id} href="/products" style={{ textDecoration: 'none' }}>
               <ProductCard
@@ -182,7 +173,7 @@ export default async function HomePage() {
       {/* How It Works */}
       <Section tone="white" pad="lg">
         <SectionHeader eyebrow="How it works" title="From brief to delivery in four steps." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 48, marginTop: 56 }}>
+        <div className="grid-4" style={{ gap: 48, marginTop: 56 }}>
           {steps.map((s) => (
             <ProcessStep
               key={s.id}
@@ -197,7 +188,7 @@ export default async function HomePage() {
       {/* Testimonials */}
       <Section tone="alt" pad="lg">
         <SectionHeader eyebrow="Client testimonials" title="Twenty years, four hundred clients." />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 24, marginTop: 56 }}>
+        <div className="grid-3" style={{ marginTop: 56 }}>
           {testimonials.map((t) => (
             <TestimonialCard
               key={t.id}
@@ -214,15 +205,12 @@ export default async function HomePage() {
       <Section tone="red" pad="md">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
           <div style={{ color: '#fff', maxWidth: 720 }}>
-            <h2 style={{
-              color: '#fff', margin: 0,
-              fontFamily: 'var(--font-display)', fontSize: 44, lineHeight: 1.1, letterSpacing: '-0.02em',
-            }}>Ready to kit your team out?</h2>
+            <h2 className="cta-h2" style={{ color: '#fff', fontFamily: 'var(--font-display)' }}>Ready to kit your team out?</h2>
             <p style={{ marginTop: 12, fontSize: 18, color: 'rgba(255,255,255,0.92)' }}>
               Tell us what you need — we&rsquo;ll quote within 24 hours.
             </p>
           </div>
-          <div style={{ display: 'flex', gap: 12 }}>
+          <div className="btn-group">
             <Link href="/contact">
               <Button variant="navy" size="lg">Get a quote</Button>
             </Link>

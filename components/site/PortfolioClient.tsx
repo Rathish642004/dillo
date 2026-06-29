@@ -102,7 +102,7 @@ export default function PortfolioClient({ projects }: PortfolioClientProps) {
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 40 }}>
+        <div className="portfolio-grid" style={{ marginTop: 40 }}>
           {filtered.map((p) => (
             <ProjectCard key={p.id} p={p} />
           ))}
@@ -112,7 +112,7 @@ export default function PortfolioClient({ projects }: PortfolioClientProps) {
       {/* CTA */}
       <Section tone="red" pad="md">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
-          <h2 style={{ color: '#fff', margin: 0, fontFamily: 'var(--font-display)', fontSize: 36, letterSpacing: '-0.02em' }}>
+          <h2 className="cta-h2" style={{ color: '#fff', fontFamily: 'var(--font-display)' }}>
             Want yours on this page next?
           </h2>
           <Link href="/contact">

@@ -29,12 +29,14 @@ a { color: inherit; }
 @media (max-width: 768px) {
   :root {
     --section-pad-y: 64px;
+    --section-pad-y-sm: 48px;
     --container-pad: 16px;
   }
 }
 @media (max-width: 480px) {
   :root {
     --section-pad-y: 48px;
+    --section-pad-y-sm: 36px;
     --container-pad: 12px;
   }
 }
@@ -95,4 +97,70 @@ a { color: inherit; }
   .navbar-hamburger { display: flex; }
   .navbar-links.open { display: flex; flex-direction: column; align-items: flex-start; }
 }
+
+/* 5-column grid */
+.grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+@media (max-width: 1200px) { .grid-5 { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .grid-5 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .grid-5 { grid-template-columns: 1fr; } }
+
+/* Hero stats strip (4 → 2 cols) */
+.hero-stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px 0; }
+@media (max-width: 768px) { .hero-stats-strip { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+/* Trusted-by client logo grid */
+.clients-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border-top: 1px solid var(--border-subtle); border-left: 1px solid var(--border-subtle);
+}
+@media (max-width: 768px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Split 2-col page hero / story layouts */
+.about-hero-grid    { display: grid; grid-template-columns: 1.2fr 1fr;  gap: 64px; align-items: center; }
+.products-hero-grid { display: grid; grid-template-columns: 1.3fr 1fr;  gap: 48px; align-items: center; }
+.story-content-grid { display: grid; grid-template-columns: 1fr 1.4fr;  gap: 80px; }
+@media (max-width: 900px) {
+  .about-hero-grid,
+  .products-hero-grid,
+  .story-content-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Contact form 2-col → 1-col */
+.contact-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Form 2-col inputs */
+.form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 640px) { .form-2col { grid-template-columns: 1fr; } }
+
+/* Button row → column on small mobile */
+.btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 480px) { .btn-group { flex-direction: column; } }
+
+/* Page hero headings (64 → 44 → 32px) */
+.page-h1 { font-size: 64px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+@media (max-width: 768px) { .page-h1 { font-size: 44px; } }
+@media (max-width: 480px) { .page-h1 { font-size: 32px; } }
+
+/* Products category h1 (56 → 38 → 28px) */
+.products-h1 { font-size: 56px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+@media (max-width: 768px) { .products-h1 { font-size: 38px; } }
+@media (max-width: 480px) { .products-h1 { font-size: 28px; } }
+
+/* CTA section headings (44 → 32 → 26px) */
+.cta-h2 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+@media (max-width: 768px) { .cta-h2 { font-size: 32px; } }
+@media (max-width: 480px) { .cta-h2 { font-size: 26px; } }
+
+/* Page hero section padding (about, contact, products) */
+.page-hero-section { padding: 96px 0 64px; position: relative; overflow: hidden; }
+@media (max-width: 768px) { .page-hero-section { padding: 72px 0 48px; } }
+@media (max-width: 480px) { .page-hero-section { padding: 56px 0 40px; } }
+
+/* Manufacturing floor photo grid */
+.mfg-floor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+@media (max-width: 768px) { .mfg-floor-grid { grid-template-columns: 1fr; border-radius: 0; } }
+
+/* Hide on narrow mobile (hero images, map overlays) */
+@media (max-width: 640px) { .hide-mobile { display: none !important; } }
 

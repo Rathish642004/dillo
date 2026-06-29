@@ -11,7 +11,9 @@ INSERT INTO company_info (key, value) VALUES
   ('whatsapp_message', 'Hi Dillo, I''d like a uniform quote.'),
   ('response_time',    '24 hours'),
   ('founded_year',     '2005'),
-  ('location_city',    'Andheri East, Mumbai')
+  ('location_city',    'Andheri East, Mumbai'),
+  ('map_lat',          '19.12'),
+  ('map_lng',          '72.87')
 ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value;
 
 -- stats
@@ -41,19 +43,19 @@ INSERT INTO testimonials (quote, author, role, avatar_url, display_order) VALUES
     'Dillo delivered 4,200 school uniforms two weeks ahead of schedule. Parents noticed the quality immediately — no fraying after the first wash.',
     'Priya Nair',
     'Principal, St. Xavier''s School Mumbai',
-    NULL, 1
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80', 1
   ),
   (
     'We''ve outfitted three Hyatt properties through Dillo. The F&B vests hold colour wash after wash — exactly what front-of-house needs.',
     'Arjun Mehta',
     'GM, Hyatt Place Mumbai',
-    NULL, 2
+    'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80', 2
   ),
   (
     'Scrubs for 900 staff across four Apollo locations. Same spec, same fit. That consistency is rare at this volume.',
     'Dr. Kavitha Rao',
     'Operations Head, Apollo Diagnostics',
-    NULL, 3
+    'https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=200&q=80', 3
   );
 
 -- value_props
@@ -69,11 +71,11 @@ INSERT INTO value_props (number, title, description, display_order) VALUES
 
 -- product_categories
 INSERT INTO product_categories (slug, name, description, image_url, display_order) VALUES
-  ('healthcare',  'Healthcare',         'Scrubs, lab coats and ward uniforms engineered for hygiene and a hundred wash cycles.',               NULL, 1),
-  ('hospitality', 'Hospitality',        'Front-of-house, F&B and housekeeping uniforms that hold colour shift after shift.',                   NULL, 2),
-  ('educational', 'Educational',        'School uniforms — shirts, trousers, blazers, sportswear — built for daily wear and parental approval.',NULL, 3),
-  ('industrial',  'Industrial / PPE',   'Coveralls, hi-vis and work shirts that meet safety standards without sacrificing comfort.',            NULL, 4),
-  ('corporate',   'Corporate T-Shirts', 'Customised tees, polos and hoodies for events, agencies and internal branding.',                      NULL, 5);
+  ('healthcare',  'Healthcare',         'Scrubs, lab coats and ward uniforms engineered for hygiene and a hundred wash cycles.',               'https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=900&q=80', 1),
+  ('hospitality', 'Hospitality',        'Front-of-house, F&B and housekeeping uniforms that hold colour shift after shift.',                   'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80', 2),
+  ('educational', 'Educational',        'School uniforms — shirts, trousers, blazers, sportswear — built for daily wear and parental approval.','https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80', 3),
+  ('industrial',  'Industrial / PPE',   'Coveralls, hi-vis and work shirts that meet safety standards without sacrificing comfort.',            'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80', 4),
+  ('corporate',   'Corporate T-Shirts', 'Customised tees, polos and hoodies for events, agencies and internal branding.',                      'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80', 5);
 
 -- products (healthcare)
 INSERT INTO products (category_id, name, price_text, moq, badge, display_order)
@@ -151,14 +153,14 @@ INSERT INTO product_specs (title, value, display_order) VALUES
 
 -- portfolio_projects
 INSERT INTO portfolio_projects (name, location, quantity, vertical, year, image_url, display_order) VALUES
-  ('MedStar Hospitals',    'Mumbai, Pune, Nashik', 12400, 'Healthcare',  2024, NULL, 1),
-  ('Hyatt Place',          'Mumbai',               1850,  'Hospitality', 2024, NULL, 2),
-  ('St. Xavier''s School', 'Mumbai',               4200,  'Educational', 2023, NULL, 3),
-  ('Welspun Manufacturing','Vapi, Gujarat',         3600,  'Industrial',  2024, NULL, 4),
-  ('Razorpay Hackathon',   'Bangalore',             850,   'Corporate',   2025, NULL, 5),
-  ('Apollo Diagnostics',   'Pan-India',             8900,  'Healthcare',  2023, NULL, 6),
-  ('Taj Bengal',           'Kolkata',               2200,  'Hospitality', 2022, NULL, 7),
-  ('Ryan International',   '16 campuses',          18400,  'Educational', 2024, NULL, 8);
+  ('MedStar Hospitals',    'Mumbai, Pune, Nashik', 12400, 'Healthcare',  2024, 'https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=900&q=80', 1),
+  ('Hyatt Place',          'Mumbai',               1850,  'Hospitality', 2024, 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80', 2),
+  ('St. Xavier''s School', 'Mumbai',               4200,  'Educational', 2023, 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80', 3),
+  ('Welspun Manufacturing','Vapi, Gujarat',         3600,  'Industrial',  2024, 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80', 4),
+  ('Razorpay Hackathon',   'Bangalore',             850,   'Corporate',   2025, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&q=80', 5),
+  ('Apollo Diagnostics',   'Pan-India',             8900,  'Healthcare',  2023, 'https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=900&q=80', 6),
+  ('Taj Bengal',           'Kolkata',               2200,  'Hospitality', 2022, 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80', 7),
+  ('Ryan International',   '16 campuses',          18400,  'Educational', 2024, 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=900&q=80', 8);
 
 -- industries
 INSERT INTO industries (name, description, icon, display_order) VALUES

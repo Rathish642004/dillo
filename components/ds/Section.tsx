@@ -16,7 +16,7 @@ const tones: Record<SectionTone, { background: string; color: string }> = {
   red:   { background: 'var(--dillo-red-500)',  color: 'var(--neutral-0)' },
 };
 
-const pads: Record<SectionPad, string> = { md: '64px 0', lg: '96px 0' };
+const pads: Record<SectionPad, string> = { md: 'var(--section-pad-y-sm) 0', lg: 'var(--section-pad-y) 0' };
 
 export default function Section({ tone = 'white', pad = 'lg', bottomRule, children, style, ...rest }: SectionProps) {
   const t = tones[tone];

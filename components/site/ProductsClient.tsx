@@ -52,13 +52,13 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
 
       {/* Category hero */}
       <section style={{ background: 'var(--bg-page-alt)', padding: '64px 0', borderBottom: '1px solid var(--border-subtle)' }}>
-        <div className="dillo-container" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 48, alignItems: 'center' }}>
+        <div className="dillo-container products-hero-grid">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
             <span className="dillo-eyebrow">Products</span>
-            <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 56, lineHeight: 1.05, letterSpacing: '-0.02em', margin: 0 }}>{cat.name}</h1>
+            <h1 className="products-h1" style={{ fontFamily: 'var(--font-display)' }}>{cat.name}</h1>
             <hr style={{ width: 64, height: 4, background: 'var(--dillo-red-500)', border: 0, margin: 0 }} />
             <p style={{ fontSize: 18, lineHeight: 1.55, color: 'var(--text-secondary)', maxWidth: 560 }}>{cat.description}</p>
-            <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+            <div className="btn-group" style={{ marginTop: 8 }}>
               <Link href="/contact">
                 <Button variant="primary" size="lg">Request a sample</Button>
               </Link>
@@ -67,7 +67,7 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
               </Link>
             </div>
           </div>
-          <div style={{
+          <div className="hide-mobile" style={{
             height: 360, borderRadius: 'var(--radius-lg)', overflow: 'hidden',
             background: cat.image_url ? `center/cover url(${cat.image_url})` : 'var(--dillo-navy-100)',
             boxShadow: 'var(--shadow-lg)',
@@ -83,7 +83,7 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
       {/* Item grid */}
       <Section tone="white" pad="lg">
         <SectionHeader eyebrow="Catalogue" title="Pieces we make in this category." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 56 }}>
+        <div className="grid-3" style={{ marginTop: 56 }}>
           {(cat.products ?? []).map((product) => (
             <Card key={product.id} pad="none" interactive>
               <div style={{
@@ -119,7 +119,7 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
       {/* Specs band */}
       <Section tone="alt" pad="md">
         <SectionHeader eyebrow="What you can spec" title="Built around your brief." />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginTop: 40 }}>
+        <div className="grid-3" style={{ marginTop: 40 }}>
           {specs.map((spec) => (
             <div key={spec.id} style={{
               padding: 20,
@@ -139,7 +139,7 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
       <Section tone="navy" pad="md" bottomRule>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, color: '#fff', flexWrap: 'wrap' }}>
           <div>
-            <h2 style={{ color: '#fff', margin: 0, fontFamily: 'var(--font-display)', fontSize: 36, letterSpacing: '-0.02em' }}>Like what you see?</h2>
+            <h2 className="cta-h2" style={{ color: '#fff', fontFamily: 'var(--font-display)' }}>Like what you see?</h2>
             <p style={{ margin: '8px 0 0', color: 'rgba(255,255,255,0.78)' }}>Request a stitched sample. We&rsquo;ll ship in 5–7 days.</p>
           </div>
           <Link href="/contact">

@@ -24,10 +24,11 @@ const labelStyle: React.CSSProperties = {
   display: 'block', fontFamily: 'var(--font-heading)', fontWeight: 600, fontSize: 13, marginBottom: 5,
 };
 
-const INFO_KEYS = ['address', 'phone', 'email', 'working_hours', 'whatsapp', 'response_time'];
+const INFO_KEYS = ['address', 'phone', 'email', 'working_hours', 'whatsapp', 'response_time', 'map_lat', 'map_lng'];
 const INFO_LABELS: Record<string, string> = {
   address: 'Address', phone: 'Phone', email: 'Email',
   working_hours: 'Working Hours', whatsapp: 'WhatsApp Number', response_time: 'Response Time',
+  map_lat: 'Map Latitude', map_lng: 'Map Longitude',
 };
 
 export default function CompanyPage() {

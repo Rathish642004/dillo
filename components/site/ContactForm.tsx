@@ -66,10 +66,13 @@ export default function ContactForm({ info }: { info: ContactInfo }) {
 
   return (
     <section style={{ background: 'var(--bg-page)', padding: '80px 0 96px' }}>
+      <style>{`
+        @media (max-width: 640px) { .contact-form-card { padding: 24px !important; } }
+      `}</style>
       <div className="dillo-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 64, alignItems: 'start' }}>
+        <div className="contact-layout">
           {/* Form */}
-          <form onSubmit={submit} style={{
+          <form onSubmit={submit} className="contact-form-card" style={{
             background: 'var(--surface-card)',
             border: '1px solid var(--border-default)',
             borderRadius: 'var(--radius-lg)',
@@ -117,7 +120,7 @@ export default function ContactForm({ info }: { info: ContactInfo }) {
               }}>{error}</div>
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div className="form-2col">
               <Input label="Name" placeholder="Anita Krishnan" value={form.name} onChange={update('name')} required />
               <Input label="Company name" placeholder="MedStar Hospitals" value={form.company} onChange={update('company')} />
               <Input label="Phone" placeholder="+91 …" value={form.phone} onChange={update('phone')} required />
@@ -137,7 +140,7 @@ export default function ContactForm({ info }: { info: ContactInfo }) {
               value={form.message}
               onChange={update('message')}
             />
-            <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+            <div className="btn-group" style={{ marginTop: 8 }}>
               <Button type="submit" variant="primary" size="lg" iconRight={<span aria-hidden>→</span>} disabled={loading || sent}>
                 {loading ? 'Sending…' : 'Send request'}
               </Button>

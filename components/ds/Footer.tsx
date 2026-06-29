@@ -1,6 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 
+interface FooterProps {
+  info: Record<string, string>;
+}
+
 const colLabel: React.CSSProperties = {
   fontFamily: 'var(--font-heading)', fontWeight: 700,
   fontSize: 13, letterSpacing: 'var(--ls-eyebrow)',
@@ -14,7 +18,7 @@ const linkStyle: React.CSSProperties = {
   display: 'block',
 };
 
-export default function Footer() {
+export default function Footer({ info }: FooterProps) {
   return (
     <footer style={{
       background: 'var(--dillo-navy-500)',
@@ -36,7 +40,7 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.85)', fontSize: 16, margin: 0,
           }}>The Perfect Uniform Makers</p>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.6, maxWidth: 320, marginTop: 8 }}>
-            Stitching uniforms for hospitals, hotels, schools and factories across India since 2005.
+            Stitching uniforms for hospitals, hotels, schools and factories across India since {info.founded_year ?? '2005'}.
           </p>
         </div>
 
@@ -63,10 +67,10 @@ export default function Footer() {
         <div>
           <div style={colLabel}>Reach us</div>
           <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 8, fontSize: 14, color: 'rgba(255,255,255,0.78)' }}>
-            <div>📍 Plot 27, MIDC Phase II,<br />Andheri East, Mumbai 400093</div>
-            <div>📞 +91 98202 12345</div>
-            <div>📧 hello@dillouniforms.com</div>
-            <div>🕒 Mon–Sat · 9:30–18:30</div>
+            <div>📍 {info.address ?? 'Plot 27, MIDC Phase II, Andheri East, Mumbai 400093'}</div>
+            <div>📞 {info.phone ?? '+91 98202 12345'}</div>
+            <div>📧 {info.email ?? 'hello@dillouniforms.com'}</div>
+            <div>🕒 {info.working_hours ?? 'Mon–Sat · 9:30–18:30'}</div>
           </div>
         </div>
       </div>

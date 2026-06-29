@@ -7,14 +7,20 @@ export const revalidate = 3600;
 
 export default async function ContactPage() {
   const info = await getCompanyInfo();
+  const lat = parseFloat(info.map_lat ?? '19.12');
+  const lng = parseFloat(info.map_lng ?? '72.87');
+  const d = 0.03;
+  const bbox = `${(lng - d).toFixed(4)}%2C${(lat - d).toFixed(4)}%2C${(lng + d).toFixed(4)}%2C${(lat + d).toFixed(4)}`;
+  const iframeSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat}%2C${lng}`;
+  const directionsHref = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}&zoom=15`;
 
   return (
     <>
       {/* Hero */}
-      <section style={{ background: 'var(--dillo-navy-500)', color: '#fff', padding: '96px 0 64px' }}>
+      <section className="page-hero-section" style={{ background: 'var(--dillo-navy-500)', color: '#fff' }}>
         <div className="dillo-container" style={{ maxWidth: 880 }}>
           <span className="dillo-eyebrow" style={{ color: 'var(--dillo-red-400)' }}>Contact</span>
-          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 1.05, letterSpacing: '-0.02em', margin: '12px 0 16px', color: '#fff' }}>
+          <h1 className="page-h1" style={{ fontFamily: 'var(--font-display)', margin: '12px 0 16px', color: '#fff' }}>
             Tell us what you need.
           </h1>
           <hr style={{ width: 96, height: 6, background: 'var(--dillo-red-500)', border: 0, margin: 0 }} />
@@ -30,12 +36,12 @@ export default async function ContactPage() {
       {/* Map */}
       <section style={{ height: 380, background: 'var(--bg-page-alt)', position: 'relative', overflow: 'hidden', borderTop: '1px solid var(--border-default)' }}>
         <iframe
-          title="Dillo Uniforms — Andheri East, Mumbai"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=72.84%2C19.11%2C72.90%2C19.13&layer=mapnik&marker=19.12%2C72.87"
+          title="Dillo Uniforms location map"
+          src={iframeSrc}
           style={{ width: '100%', height: '100%', border: 0, filter: 'saturate(0.85)' }}
           loading="lazy"
         />
-        <div style={{
+        <div className="map-overlay" style={{
           position: 'absolute', left: 32, top: 32,
           padding: 20,
           background: 'var(--neutral-0)',
@@ -50,7 +56,7 @@ export default async function ContactPage() {
           </div>
           <hr className="dillo-rule" style={{ margin: '12px 0' }} />
           <a
-            href={`https://www.openstreetmap.org/?mlat=19.12&mlon=72.87&zoom=15`}
+            href={directionsHref}
             target="_blank"
             rel="noopener noreferrer"
             style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 13, color: 'var(--dillo-red-500)', textDecoration: 'none' }}
