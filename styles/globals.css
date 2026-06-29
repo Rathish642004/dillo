@@ -105,7 +105,7 @@ a { color: inherit; }
 @media (max-width: 480px)  { .grid-5 { grid-template-columns: 1fr; } }
 
 /* Hero stats strip (4 → 2 cols) */
-.hero-stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px 0; }
+.hero-stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 24px; padding-bottom: 24px; }
 @media (max-width: 768px) { .hero-stats-strip { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
 
 /* Trusted-by client logo grid */
@@ -163,4 +163,18 @@ a { color: inherit; }
 
 /* Hide on narrow mobile (hero images, map overlays) */
 @media (max-width: 640px) { .hide-mobile { display: none !important; } }
+
+/* Map overlay — compact on mobile */
+@media (max-width: 640px) {
+  .map-overlay {
+    left: 10px !important;
+    top: 10px !important;
+    padding: 10px 12px !important;
+    max-width: 190px !important;
+  }
+  .map-overlay > *:first-child { font-size: 13px !important; }
+  .map-overlay > *:nth-child(2) { font-size: 11px !important; margin-top: 4px !important; }
+  .map-overlay a { font-size: 11px !important; }
+  .map-overlay hr { margin: 8px 0 !important; }
+}
 
