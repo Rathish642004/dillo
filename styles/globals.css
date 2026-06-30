@@ -36,7 +36,7 @@ a { color: inherit; }
 @media (max-width: 480px) {
   :root {
     --section-pad-y: 48px;
-    --section-pad-y-sm: 36px;
+    --section-pad-y-sm: 20px;
     --container-pad: 12px;
   }
 }
@@ -62,6 +62,11 @@ a { color: inherit; }
 /* Hero stats strip */
 .hero-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding: 24px 0; }
 @media (max-width: 768px) { .hero-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+/* StatCard value number — responsive size */
+.stat-card-value { font-size: 56px; }
+@media (max-width: 768px) { .stat-card-value { font-size: 40px; } }
+@media (max-width: 480px) { .stat-card-value { font-size: 32px; } }
 
 /* Products page category tabs — horizontal scroll on mobile */
 .category-tabs { display: flex; gap: 8px; }
@@ -135,7 +140,7 @@ a { color: inherit; }
 
 /* Button row → column on small mobile */
 .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-@media (max-width: 480px) { .btn-group { flex-direction: column; } }
+@media (max-width: 480px) { .btn-group { gap: 8px; } }
 
 /* Page hero headings (64 → 44 → 32px) */
 .page-h1 { font-size: 64px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }

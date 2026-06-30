@@ -2,20 +2,16 @@ import Link from 'next/link';
 import Section from '@/components/ds/Section';
 import SectionHeader from '@/components/ds/SectionHeader';
 import Button from '@/components/ds/Button';
-import StatCard from '@/components/ds/StatCard';
 import ProductCard from '@/components/ds/ProductCard';
 import TestimonialCard from '@/components/ds/TestimonialCard';
 import ProcessStep from '@/components/ds/ProcessStep';
 import LogoMarquee from '@/components/site/LogoMarquee';
 import HeroCarousel from '@/components/site/HeroCarousel';
 import SocialProofTicker from '@/components/ds/SocialProofTicker';
-import IndustryQuickSelect from '@/components/site/IndustryQuickSelect';
-import TrustBadges from '@/components/ds/TrustBadges';
 import RevealOnScroll from '@/components/ds/RevealOnScroll';
 import {
   getStats,
   getClients,
-  getValueProps,
   getTestimonials,
   getProductCategories,
   getProcessSteps,
@@ -24,10 +20,9 @@ import {
 export const revalidate = 3600;
 
 export default async function HomePage() {
-  const [stats, clients, valueProps, testimonials, categories, steps] = await Promise.all([
+  const [stats, clients, testimonials, categories, steps] = await Promise.all([
     getStats(),
     getClients(),
-    getValueProps(),
     getTestimonials(),
     getProductCategories(),
     getProcessSteps('how_it_works'),
@@ -40,33 +35,9 @@ export default async function HomePage() {
       {/* Hero */}
       <HeroCarousel heroStats={heroStats} />
       <SocialProofTicker />
-      <IndustryQuickSelect />
 
       {/* Trusted By */}
       <LogoMarquee clients={clients} />
-      <TrustBadges />
-
-      {/* Why Dillo */}
-      <RevealOnScroll>
-        <Section tone="white" pad="lg">
-          <SectionHeader eyebrow="Why Dillo" title="Built to last. Delivered on time." />
-          <div className="grid-4" style={{ marginTop: 56 }}>
-            {valueProps.map((vp, idx) => (
-              <div key={vp.id} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <span style={{
-                  display: 'inline-flex', alignSelf: 'flex-start',
-                  width: 56, height: 56, borderRadius: 4,
-                  background: 'var(--dillo-red-50)', color: 'var(--dillo-red-500)',
-                  fontFamily: 'var(--font-display)', fontSize: 22,
-                  alignItems: 'center', justifyContent: 'center',
-                }}>{vp.number}</span>
-                <h3 style={{ fontSize: 20, margin: 0 }}>{vp.title}</h3>
-                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.55 }}>{vp.description}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-      </RevealOnScroll>
 
       {/* Products */}
       <RevealOnScroll delay={50}>
@@ -74,7 +45,7 @@ export default async function HomePage() {
           <SectionHeader eyebrow="Our products" title="Five verticals, one quality bar." description="Pick a category — every one ships from the same Mumbai floor under the same QC team." />
           <div className="cat-card-grid" style={{ marginTop: 48 }}>
             {categories.map((cat) => (
-              <Link key={cat.id} href="/products" style={{ textDecoration: 'none' }}>
+              <Link key={cat.id} href={`/products/${cat.slug}`} style={{ textDecoration: 'none', display: 'block', height: '100%' }}>
                 <ProductCard
                   title={cat.name}
                   description={cat.description ?? ''}

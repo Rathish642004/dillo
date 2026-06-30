@@ -31,7 +31,7 @@ const slides = [
     headline: 'Dressed to impress.\nEvery shift, every floor.',
     subtext:
       'From front desk to housekeeping — uniforms that carry your brand identity with consistent colour, cut and tailoring.',
-    primaryCta: { label: 'Explore Hospitality', href: '/products?cat=hospitality' },
+    primaryCta: { label: 'Explore Hospitality', href: '/products/hospitality' },
     secondaryCta: { label: 'See portfolio', href: '/portfolio' },
     bgImage:
       'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80',
@@ -41,7 +41,7 @@ const slides = [
     headline: 'Uniform quality.\nAcross every campus.',
     subtext:
       'Bulk school and corporate uniforms with consistent colour, fit and fabric — delivered term on time, every time.',
-    primaryCta: { label: 'Explore School Uniforms', href: '/products?cat=educational' },
+    primaryCta: { label: 'Explore School Uniforms', href: '/products/educational' },
     secondaryCta: { label: 'Get a quote', href: '/contact' },
     bgImage:
       'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1600&q=80',
@@ -88,18 +88,46 @@ export default function HeroCarousel({ heroStats }: HeroCarouselProps) {
 
   return (
     <section
-      style={{ position: 'relative', minHeight: 640, overflow: 'hidden' }}
+      className="hero-section"
+      style={{ position: 'relative', overflow: 'hidden' }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <style>{`
-        .hero-main-pad { padding-top: 120px; padding-bottom: 160px; }
-        @media (max-width: 768px) { .hero-main-pad { padding-top: 72px; padding-bottom: 120px; } }
-        @media (max-width: 480px) { .hero-main-pad { padding-top: 56px; padding-bottom: 96px; } }
+        /* Fixed height — prevents layout shift between slides */
+        .hero-section { height: 720px; }
+        @media (max-width: 768px) { .hero-section { height: 640px; } }
+        @media (max-width: 480px) { .hero-section { height: 600px; } }
+
+        /* Content wrapper fills the section absolutely so it never drives height */
+        .hero-content-wrap {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          overflow: hidden;
+        }
+        .hero-main-pad { padding-top: 120px; padding-bottom: 8px; }
+        @media (max-width: 768px) { .hero-main-pad { padding-top: 72px; padding-bottom: 8px; } }
+        @media (max-width: 480px) { .hero-main-pad { padding-top: 35px; padding-bottom: 8px; } }
+        /* Clamp paragraph to 3 lines on mobile/tablet — prevents long slides from pushing buttons behind stats strip */
         .hero-lead-text { font-size: 20px; }
-        @media (max-width: 480px) { .hero-lead-text { font-size: 16px; } }
+        @media (max-width: 768px) {
+          .hero-lead-text {
+            font-size: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+        }
+        /* Tighten content spacing on mobile so all items fit in the fixed height */
+        .hero-inner-content { display: flex; flex-direction: column; gap: 24px; }
+        @media (max-width: 768px) { .hero-inner-content { gap: 16px; } }
+        @media (max-width: 480px) { .hero-inner-content { gap: 12px; } }
+        /* Keep hero buttons in a row on mobile — never stack to column */
+        .hero-btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 0; }
         @keyframes ken-burns {
           from { transform: scale(1); }
           to   { transform: scale(1.08); }
@@ -146,14 +174,13 @@ export default function HeroCarousel({ heroStats }: HeroCarouselProps) {
         }}
       />
 
-      {/* Content */}
-      <div className="dillo-container hero-main-pad" style={{ position: 'relative', zIndex: 2 }}>
+      {/* Content — absolutely positioned so it never drives section height */}
+      <div className="hero-content-wrap">
+      <div className="dillo-container hero-main-pad">
         <div
+          className="hero-inner-content"
           style={{
             maxWidth: 680,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 24,
             color: '#fff',
             opacity: contentVisible ? 1 : 0,
             transition: 'opacity 0.3s ease',
@@ -211,7 +238,7 @@ export default function HeroCarousel({ heroStats }: HeroCarouselProps) {
             {slides[current].subtext}
           </p>
 
-          <div className="btn-group" style={{ marginTop: 8 }}>
+          <div className="hero-btn-group">
             <Link href={slides[current].primaryCta.href}>
               <Button
                 variant="primary"
@@ -257,6 +284,7 @@ export default function HeroCarousel({ heroStats }: HeroCarouselProps) {
           </div>
         </div>
       </div>
+      </div>{/* end hero-content-wrap */}
 
       {/* Stats strip */}
       <div

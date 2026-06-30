@@ -28,6 +28,7 @@ export default function ProductCard({ title, description, imageSrc, badge, items
         transform: hover ? 'translateY(-3px)' : 'translateY(0)',
         transition: 'transform 0.22s ease, box-shadow 0.22s ease',
         display: 'flex', flexDirection: 'column',
+        height: '100%',
         cursor: 'pointer',
       }}
     >

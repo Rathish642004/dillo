@@ -17,9 +17,9 @@ export default function StatCard({ value, label, icon, onDark }: StatCardProps) 
       borderLeft: '4px solid var(--dillo-red-500)',
     }}>
       {icon ? <div style={{ color, marginBottom: 4 }}>{icon}</div> : null}
-      <div style={{
+      <div className="stat-card-value" style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 56, lineHeight: 1,
+        lineHeight: 1,
         color,
         letterSpacing: '-0.02em',
       }}>{value}</div>

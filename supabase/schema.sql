@@ -80,8 +80,11 @@ CREATE TABLE IF NOT EXISTS products (
   moq           TEXT,
   badge         TEXT,
   image_url     TEXT,
+  gender        TEXT CHECK (gender IN ('men', 'women', 'unisex')),
   display_order INT  DEFAULT 0
 );
+-- Migration: add gender to existing installs
+-- ALTER TABLE products ADD COLUMN IF NOT EXISTS gender TEXT CHECK (gender IN ('men', 'women', 'unisex'));
 ALTER TABLE products ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "public_read"  ON products FOR SELECT USING (true);
 CREATE POLICY "admin_write"  ON products FOR ALL

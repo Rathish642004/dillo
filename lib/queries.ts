@@ -97,6 +97,24 @@ export async function getProductCategories(): Promise<ProductCategory[]> {
   }));
 }
 
+export async function getProductCategoryBySlug(slug: string): Promise<ProductCategory | null> {
+  const supabase = await createClient();
+  const { data: cat, error: catError } = await supabase
+    .from('product_categories')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+  if (catError || !cat) return null;
+
+  const { data: products } = await supabase
+    .from('products')
+    .select('*')
+    .eq('category_id', cat.id)
+    .order('display_order');
+
+  return { ...cat, products: products ?? [] };
+}
+
 export async function getProductSpecs(): Promise<ProductSpec[]> {
   const supabase = await createClient();
   const { data, error } = await supabase

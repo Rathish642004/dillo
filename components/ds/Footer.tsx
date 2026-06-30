@@ -20,25 +20,20 @@ const linkStyle: React.CSSProperties = {
 
 export default function Footer({ info }: FooterProps) {
   return (
-    <footer style={{
+    <footer className="site-footer" style={{
       background: 'var(--dillo-navy-500)',
       color: 'var(--neutral-0)',
-      paddingTop: 80, paddingBottom: 24,
+      paddingBottom: 24,
       borderTop: '4px solid var(--dillo-red-500)',
       position: 'relative',
     }}>
       <div className="dillo-container footer-grid">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-          <span style={{
-            display: 'inline-flex', alignSelf: 'flex-start',
-            background: 'var(--dillo-red-500)', color: 'var(--neutral-0)',
-            padding: '6px 14px', borderRadius: 2,
-            fontFamily: 'var(--font-display)', fontSize: 24,
-          }}>DILLO</span>
-          <p style={{
-            fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-            color: 'rgba(255,255,255,0.85)', fontSize: 16, margin: 0,
-          }}>The Perfect Uniform Makers</p>
+          <img
+            src="/logo.jpeg"
+            alt="Dillo Uniforms"
+            className="footer-logo"
+          />
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 14, lineHeight: 1.6, maxWidth: 320, marginTop: 8 }}>
             Stitching uniforms for hospitals, hotels, schools and factories across India since {info.founded_year ?? '2005'}.
           </p>
@@ -47,11 +42,11 @@ export default function Footer({ info }: FooterProps) {
         <div>
           <div style={colLabel}>Products</div>
           <div style={{ marginTop: 12 }}>
-            <Link href="/products?cat=healthcare"  style={linkStyle}>Healthcare</Link>
-            <Link href="/products?cat=hospitality" style={linkStyle}>Hospitality</Link>
-            <Link href="/products?cat=educational" style={linkStyle}>School</Link>
-            <Link href="/products?cat=industrial"  style={linkStyle}>Industrial</Link>
-            <Link href="/products?cat=corporate"   style={linkStyle}>Corporate T-Shirts</Link>
+            <Link href="/products/healthcare"  style={linkStyle}>Healthcare</Link>
+            <Link href="/products/hospitality" style={linkStyle}>Hospitality</Link>
+            <Link href="/products/educational" style={linkStyle}>School</Link>
+            <Link href="/products/industrial"  style={linkStyle}>Industrial</Link>
+            <Link href="/products/corporate"   style={linkStyle}>Corporate T-Shirts</Link>
           </div>
         </div>
 
@@ -90,6 +85,10 @@ export default function Footer({ info }: FooterProps) {
       </div>
 
       <style>{`
+        .site-footer { padding-top: 40px; }
+        .footer-logo {
+          height: 48px; width: auto; display: block; max-width: 180px;
+        }
         .footer-grid {
           display: grid;
           grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -99,7 +98,13 @@ export default function Footer({ info }: FooterProps) {
           .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
         @media (max-width: 480px) {
-          .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+          .site-footer { padding-top: 20px; }
+          /* 2-column grid so Products + Company sit side by side */
+          .footer-grid { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
+          /* Logo/about and Reach us each span the full row */
+          .footer-grid > div:first-child { grid-column: 1 / -1; }
+          .footer-grid > div:last-child  { grid-column: 1 / -1; }
+          .footer-logo { height: 40px; max-width: 140px; }
         }
       `}</style>
     </footer>

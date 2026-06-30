@@ -46,6 +46,7 @@ export type Product = {
   moq?: string;
   badge?: string;
   image_url?: string;
+  gender?: 'men' | 'women' | 'unisex';
   display_order: number;
 };
 

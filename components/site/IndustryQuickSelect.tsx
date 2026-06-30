@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 const industries = [
-  { label: 'Healthcare',  href: '/products?cat=healthcare'  },
-  { label: 'Hospitality', href: '/products?cat=hospitality' },
-  { label: 'School',      href: '/products?cat=educational' },
-  { label: 'Industrial',  href: '/products?cat=industrial'  },
-  { label: 'Corporate',   href: '/products?cat=corporate'   },
+  { label: 'Healthcare',  href: '/products/healthcare'  },
+  { label: 'Hospitality', href: '/products/hospitality' },
+  { label: 'School',      href: '/products/educational' },
+  { label: 'Industrial',  href: '/products/industrial'  },
+  { label: 'Corporate',   href: '/products/corporate'   },
 ];
 
 export default function IndustryQuickSelect() {

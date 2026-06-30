@@ -4,17 +4,15 @@ import Section from '@/components/ds/Section';
 import SectionHeader from '@/components/ds/SectionHeader';
 import StatCard from '@/components/ds/StatCard';
 import ProcessStep from '@/components/ds/ProcessStep';
-import Card from '@/components/ds/Card';
 import Button from '@/components/ds/Button';
-import { getStats, getIndustries, getProcessSteps } from '@/lib/queries';
+import { getStats, getProcessSteps } from '@/lib/queries';
 
 export const metadata: Metadata = { title: 'About Us' };
 export const revalidate = 3600;
 
 export default async function AboutPage() {
-  const [stats, industries, mfgSteps] = await Promise.all([
+  const [stats, mfgSteps] = await Promise.all([
     getStats(),
-    getIndustries(),
     getProcessSteps('manufacturing'),
   ]);
 
@@ -31,11 +29,80 @@ export default async function AboutPage() {
         .about-hero-pad { padding: 120px 0 96px; }
         @media (max-width: 768px) { .about-hero-pad { padding: 72px 0 56px; } }
         @media (max-width: 480px) { .about-hero-pad { padding: 56px 0 40px; } }
+
+        .about-hero-img {
+          height: 380px;
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          box-shadow: var(--shadow-xl);
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+        @media (max-width: 640px) {
+          /* Pull image out of grid flow → absolute background layer */
+          .about-hero-img {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            opacity: 0.35;
+            z-index: 0;
+          }
+          /* Keep text above the image layer */
+          .about-hero-text {
+            position: relative;
+            z-index: 1;
+          }
+        }
+
+        /* Manufacturing step cards */
+        .mfg-step-card   { position: relative; }
+        .mfg-step-bg     { display: none; }
+        .mfg-step-overlay{ display: none; }
+
+        @media (max-width: 640px) {
+          .mfg-step-card {
+            min-height: 240px;
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+          }
+          .mfg-step-bg {
+            display: block;
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+          }
+          .mfg-step-overlay {
+            display: block;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(10,22,56,0.82) 0%, rgba(10,22,56,0.65) 100%);
+            z-index: 0;
+          }
+          .mfg-step-content {
+            position: relative;
+            z-index: 1;
+          }
+          /* Override CSS vars so ProcessStep text goes white */
+          .mfg-step-card {
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255,255,255,0.78);
+          }
+          /* Hide the image gallery strip — images already show behind steps */
+          .mfg-floor-grid { display: none !important; }
+        }
       `}</style>
       {/* Hero */}
       <section className="about-hero-pad" style={{ background: 'var(--dillo-navy-500)', color: '#fff', position: 'relative', overflow: 'hidden' }}>
         <div className="dillo-container about-hero-grid">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <div className="about-hero-text" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             <span className="dillo-eyebrow" style={{ color: 'var(--dillo-red-400)' }}>About Dillo</span>
             <h1 className="page-h1" style={{ fontFamily: 'var(--font-display)', color: '#fff' }}>
               A family of stitchers, on the Mumbai floor since 2005.
@@ -45,12 +112,7 @@ export default async function AboutPage() {
               &ldquo;We&rsquo;ve never sold a uniform we wouldn&rsquo;t put on our own team.&rdquo;
             </p>
           </div>
-          <div className="hide-mobile" style={{
-            height: 380,
-            borderRadius: 'var(--radius-lg)',
-            overflow: 'hidden',
-            boxShadow: 'var(--shadow-xl)',
-            border: '1px solid rgba(255,255,255,0.1)',
+          <div className="about-hero-img" style={{
             background: `center/cover url(https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1400&q=80)`,
           }} />
         </div>
@@ -77,44 +139,50 @@ export default async function AboutPage() {
         </div>
       </Section>
 
-      {/* Industries */}
-      <Section tone="white" pad="lg">
-        <SectionHeader eyebrow="Industries we serve" title="Five verticals, decades of fluency." />
-        <div className="grid-5" style={{ marginTop: 56 }}>
-          {industries.map((ind) => (
-            <Card key={ind.id} pad="md" interactive>
-              <h3 style={{ fontSize: 18, margin: '0 0 8px' }}>{ind.name}</h3>
-              <p style={{ margin: 0, fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.55 }}>{ind.description}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
       {/* Manufacturing */}
       <Section tone="alt" pad="lg">
         <SectionHeader eyebrow="Manufacturing process" title="What happens on our floor." />
-        <div className="grid-5" style={{ gap: 32, marginTop: 56 }}>
-          {mfgSteps.map((s) => (
-            <ProcessStep
-              key={s.id}
-              number={String(s.step_number).padStart(2, '0')}
-              title={s.title}
-              description={s.description}
-            />
-          ))}
-        </div>
-        <div className="mfg-floor-grid" style={{ marginTop: 64 }}>
-          {[
+        {(() => {
+          const mfgImages = [
             'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1400&q=80',
             'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1400&q=80',
             'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=80',
-          ].map((src) => (
-            <div key={src} style={{
-              height: 240,
-              background: `center/cover url(${src})`,
-            }} />
-          ))}
-        </div>
+          ];
+          return (
+            <>
+              <div className="grid-5" style={{ gap: 32, marginTop: 56 }}>
+                {mfgSteps.map((s, idx) => (
+                  <div key={s.id} className="mfg-step-card">
+                    {/* Background image — visible only on mobile */}
+                    <div
+                      className="mfg-step-bg"
+                      style={{ backgroundImage: `url(${mfgImages[idx % mfgImages.length]})` }}
+                    />
+                    {/* Dark overlay — visible only on mobile */}
+                    <div className="mfg-step-overlay" />
+                    {/* Step content */}
+                    <div className="mfg-step-content">
+                      <ProcessStep
+                        number={String(s.step_number).padStart(2, '0')}
+                        title={s.title}
+                        description={s.description}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Image strip — hidden on mobile (images show behind steps there) */}
+              <div className="mfg-floor-grid" style={{ marginTop: 64 }}>
+                {mfgImages.map((src) => (
+                  <div key={src} style={{
+                    height: 240,
+                    background: `center/cover url(${src})`,
+                  }} />
+                ))}
+              </div>
+            </>
+          );
+        })()}
       </Section>
 
       {/* CTA */}
