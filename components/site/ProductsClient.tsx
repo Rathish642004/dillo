@@ -83,37 +83,58 @@ export default function ProductsClient({ categories, specs, initialCategory }: P
       {/* Item grid */}
       <Section tone="white" pad="lg">
         <SectionHeader eyebrow="Catalogue" title="Pieces we make in this category." />
-        <div className="grid-3" style={{ marginTop: 56 }}>
+        <div className="product-card-grid" style={{ marginTop: 40 }}>
           {(cat.products ?? []).map((product) => (
-            <Card key={product.id} pad="none" interactive>
-              <div style={{
-                height: 220,
+            <div key={product.id} className="product-card-item">
+              {/* Portrait image — 3:4 aspect ratio */}
+              <div style={{ position: 'relative', paddingBottom: '133%', overflow: 'hidden',
                 background: cat.image_url ? `center/cover url(${cat.image_url})` : 'var(--dillo-navy-50)',
-                position: 'relative',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
                 {product.badge && (
                   <span style={{
-                    position: 'absolute', top: 12, left: 12,
-                    background: 'var(--dillo-red-500)', color: '#fff',
-                    padding: '4px 10px', borderRadius: 2,
-                    fontFamily: 'var(--font-heading)', fontWeight: 700,
-                    fontSize: 11, letterSpacing: 'var(--ls-eyebrow)', textTransform: 'uppercase' as const,
+                    position: 'absolute', top: 10, left: 10, zIndex: 1,
+                    background: '#fff', color: 'var(--text-primary)',
+                    padding: '4px 12px', borderRadius: 'var(--radius-pill)',
+                    fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 11,
+                    boxShadow: '0 1px 6px rgba(0,0,0,0.14)',
                   }}>{product.badge}</span>
                 )}
                 {!cat.image_url && (
-                  <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, color: 'var(--dillo-navy-300)', fontSize: 14 }}>{product.name}</span>
+                  <span style={{
+                    position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontFamily: 'var(--font-heading)', fontWeight: 700, color: 'var(--dillo-navy-300)', fontSize: 14,
+                  }}>{product.name}</span>
                 )}
               </div>
-              <div style={{ padding: 20 }}>
-                <h3 style={{ fontSize: 18, margin: 0 }}>{product.name}</h3>
-                <p style={{ margin: '8px 0 0', fontSize: 14, color: 'var(--text-secondary)' }}>
+              {/* Text */}
+              <div style={{ padding: '12px 14px 16px', background: '#fff' }}>
+                <h3 style={{ fontSize: 15, fontWeight: 700, margin: '0 0 4px', color: 'var(--text-primary)', lineHeight: 1.3 }}>{product.name}</h3>
+                <p style={{ margin: 0, fontSize: 13, color: 'var(--text-secondary)' }}>
                   {product.price_text ?? ''}{product.moq ? ` · MOQ ${product.moq}` : ''}
                 </p>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
+        <style>{`
+          .product-card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+          }
+          .product-card-item {
+            border: 1px solid var(--border-subtle);
+            overflow: hidden;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+          }
+          .product-card-item:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+            transform: translateY(-2px);
+          }
+          @media (max-width: 1024px) { .product-card-grid { grid-template-columns: repeat(3, 1fr); } }
+          @media (max-width: 768px)  { .product-card-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+        `}</style>
       </Section>
 
       {/* Specs band */}

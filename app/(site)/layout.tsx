@@ -1,6 +1,8 @@
 import NavBar from '@/components/ds/NavBar';
 import Footer from '@/components/ds/Footer';
-import WhatsAppFab from '@/components/ds/WhatsAppFab';
+import WhatsAppWidget from '@/components/site/WhatsAppWidget';
+import MobileCtaBar from '@/components/ds/MobileCtaBar';
+import OfferPopup from '@/components/site/OfferPopup';
 import { getCompanyInfo } from '@/lib/queries';
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -10,7 +12,9 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <NavBar />
       <main>{children}</main>
       <Footer info={info} />
-      <WhatsAppFab phone={info.whatsapp} message={info.whatsapp_message} />
+      <WhatsAppWidget phone={info.whatsapp} message={info.whatsapp_message} />
+      <MobileCtaBar phone={info.phone} whatsapp={info.whatsapp} />
+      <OfferPopup />
     </>
   );
 }

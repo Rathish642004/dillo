@@ -11,9 +11,11 @@ export default function WhatsAppFab({ phone = '919820212345', message = "Hi Dill
   const [hover, setHover] = React.useState(false);
   const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   return (
+    <>
     <a href={href} target="_blank" rel="noopener noreferrer"
        onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
        aria-label="Chat with us on WhatsApp"
+       className="whatsapp-fab"
        style={{
          position: 'fixed', right: 24, bottom: 24, zIndex: 60,
          display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -33,5 +35,11 @@ export default function WhatsAppFab({ phone = '919820212345', message = "Hi Dill
       </svg>
       <span>WhatsApp us</span>
     </a>
+    <style>{`
+      @media (max-width: 768px) {
+        .whatsapp-fab { display: none !important; }
+      }
+    `}</style>
+    </>
   );
 }

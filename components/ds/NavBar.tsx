@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button from './Button';
+import AnnouncementBar from './AnnouncementBar';
 
 const links = [
   { key: 'home',      label: 'Home',      href: '/' },
@@ -35,20 +36,15 @@ export default function NavBar() {
       boxShadow: scrolled ? 'var(--shadow-xs)' : 'none',
       transition: 'border-color var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out)',
     }}>
+      <AnnouncementBar />
       <div className="dillo-container" style={{ display: 'flex', alignItems: 'center', gap: 24, height: 72 }}>
         {/* Brand lockup */}
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-          <span style={{
-            display: 'inline-flex', alignItems: 'center',
-            background: 'var(--dillo-red-500)', color: 'var(--neutral-0)',
-            padding: '6px 12px', borderRadius: 2,
-            fontFamily: 'var(--font-display)', fontSize: 22, letterSpacing: '0.02em',
-            lineHeight: 1,
-          }}>DILLO</span>
-          <span style={{
-            fontFamily: 'var(--font-serif)', fontStyle: 'italic',
-            color: 'var(--dillo-navy-500)', fontSize: 14,
-          }} className="nav-tagline">The Perfect Uniform Makers</span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <img
+            src="/logo.jpeg"
+            alt="Dillo Uniforms — The Perfect Uniform Makers"
+            style={{ height: 48, width: 'auto', display: 'block' }}
+          />
         </Link>
 
         {/* Desktop nav */}
