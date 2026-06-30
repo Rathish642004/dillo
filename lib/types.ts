@@ -15,7 +15,7 @@ export type Stat = {
 export type Client = {
   id: string;
   name: string;
-  logo_url?: string;
+  logo_url: string | null;
   display_order: number;
 };
 
